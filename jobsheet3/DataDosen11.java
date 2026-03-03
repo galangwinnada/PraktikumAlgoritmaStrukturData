@@ -1,0 +1,63 @@
+package jobsheet3;
+
+public class DataDosen11 {
+    
+    public void dataSemuaDosen(Dosen11[] arrayOfDosen) {
+        System.out.println("\n===== DATA SEMUA DOSEN =====");
+        for (Dosen11 d : arrayOfDosen) {
+            System.out.println("Kode          : " + d.kode);
+            System.out.println("Nama          : " + d.nama);
+            System.out.println("Jenis Kelamin : " + (d.jenisKelamin ? "Pria" : "Wanita"));
+            System.out.println("Usia          : " + d.usia);
+            System.out.println("------------------------------");
+        }
+    }
+
+    public void jumlahDosenPerJenisKelamin(Dosen11[] arrayOfDosen) {
+        int pria = 0, wanita = 0;
+        for (Dosen11 d : arrayOfDosen) {
+            if (d.jenisKelamin) pria++;
+            else wanita++;
+        }
+        System.out.println("Jumlah Dosen Pria   : " + pria);
+        System.out.println("Jumlah Dosen Wanita : " + wanita);
+    }
+
+    public void rerataUsiaDosenPerJenisKelamin(Dosen11[] arrayOfDosen) {
+        int totalUsiaPria = 0, totalUsiaWanita = 0;
+        int jmlPria = 0, jmlWanita = 0;
+
+        for (Dosen11 d : arrayOfDosen) {
+            if (d.jenisKelamin) {
+                totalUsiaPria += d.usia;
+                jmlPria++;
+            } else {
+                totalUsiaWanita += d.usia;
+                jmlWanita++;
+            }
+        }
+
+        System.out.println("Rata-rata Usia Pria   : " + (jmlPria > 0 ? (double) totalUsiaPria / jmlPria : 0));
+        System.out.println("Rata-rata Usia Wanita : " + (jmlWanita > 0 ? (double) totalUsiaWanita / jmlWanita : 0));
+    }
+
+    public void infoDosenPalingTua(Dosen11[] arrayOfDosen) {
+        Dosen11 palingTua = arrayOfDosen[0];
+        for (Dosen11 d : arrayOfDosen) {
+            if (d.usia > palingTua.usia) {
+                palingTua = d;
+            }
+        }
+        System.out.println("Dosen Paling Tua: " + palingTua.nama + " (" + palingTua.usia + " tahun)");
+    }
+
+    public void infoDosenPalingMuda(Dosen11[] arrayOfDosen) {
+        Dosen11 palingMuda = arrayOfDosen[0];
+        for (Dosen11 d : arrayOfDosen) {
+            if (d.usia < palingMuda.usia) {
+                palingMuda = d;
+            }
+        }
+        System.out.println("Dosen Paling Muda: " + palingMuda.nama + " (" + palingMuda.usia + " tahun)");
+    }
+}
